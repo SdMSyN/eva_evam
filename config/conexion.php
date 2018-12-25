@@ -4,7 +4,7 @@
     $host="localhost";
     $user="root";
     $pass="";
-    $db="eva_ins";
+    $db="eva_evam";
     $con=mysqli_connect($host, $user, $pass, $db);
     if($con->connect_error){
             die("Connection failed: ".$con->connect_error);
@@ -57,4 +57,6 @@
         $tAvAsigT = "aviso_asig_tutor";
         $tAvTipo = "aviso_tipo";
         
+    //Tablas paquetes
+        $tPaq = "paquetes";
 ?>

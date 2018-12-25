@@ -37,7 +37,7 @@
         } else if($_SESSION['perfil'] == "10"){
             $cadMenuNavbar .= '<li><a href="index_admin.php">Menú Administrador</a></li>';
             $cadMenuNavbar .= '<li><a href="admin_read_banco_niveles.php">Bancos</a></li>';
-            $cadMenuNavbar .= '<li><a href="admin_read_escuelas.php">Escuelas</a></li>';
+            //$cadMenuNavbar .= '<li><a href="admin_read_escuelas.php">Escuelas</a></li>';
         }else{
             $cadMenuNavbar .= '<li>¿Cómo llegaste hasta acá?</li>';
         }
