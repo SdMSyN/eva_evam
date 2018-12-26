@@ -40,7 +40,7 @@
             $tipoResp = $rowGetPregs['tipo_resp'];
             $creador = $rowGetPregs['creado_por_id'];
             $compartir = $rowGetPregs['compartir'];
-            if($creador != $idUser && $compartir == 0) continue;
+            //if($creador != $idUser && $compartir == 0) continue;
             
             //Obtenemos el nombre de los profesores
             if($rowGetPregs['perfil_creador'] != 10){

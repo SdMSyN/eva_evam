@@ -19,7 +19,7 @@
             $cadMenuNavbar .= '<li><a href="index_profesor.php">Inicio Profesor</a></li>';
             $cadMenuNavbar .= '<li><a href="prof_read_grupos.php">Grupos</a></li>';
             $cadMenuNavbar .= '<li><a href="prof_read_my_pregs.php">Mis preguntas</a></li>';
-            $cadMenuNavbar .= '<li><a href="prof_read_exams.php">Exámenes</a></li>';
+            $cadMenuNavbar .= '<li><a href="prof_read_exams.php">Cuestionarios</a></li>';
             $cadMenuNavbar .= '<li><a href="prof_read_exa_info_asigs.php">Resultados</a></li>';
             $cadMenuNavbar .= '<li><a href="prof_read_notificaciones.php">Notificaciones</a></li>';
         } else if($_SESSION['perfil'] == "3"){//Alumno

@@ -215,7 +215,16 @@
         $('#loading').hide();
         var ordenar = '';
         $(document).ready(function(){
-                
+            $('#inputNombreAsig').attr("disabled", true);
+            $('#inputAle').attr("disabled", true);
+            $('#inputBeginF').attr("disabled", true);
+            $('#inputBeginH').attr("disabled", true);
+            $('#inputEndF').attr("disabled", true);
+            $('#inputEndH').attr("disabled", true);
+            $('#inputH').attr("disabled", true);
+            $('#inputM').attr("disabled", true);
+            $('#inputShowResult').attr("disabled", true);
+            
            //Obtener materias a partir de grupo
             $("#inputGrupo").on("change", function(){
                 $.ajax({
@@ -276,6 +285,15 @@
                                 $("#inputEndF").val("<?=$dateNow;?>");
                                 $("#inputEndH").val("23:59");
                                 $('#buttonAsig').attr("disabled", false);
+                                $('#inputNombreAsig').attr("disabled", false);
+                                $('#inputAle').attr("disabled", false);
+                                $('#inputBeginF').attr("disabled", false);
+                                $('#inputBeginH').attr("disabled", false);
+                                $('#inputEndF').attr("disabled", false);
+                                $('#inputEndH').attr("disabled", false);
+                                $('#inputH').attr("disabled", false);
+                                $('#inputM').attr("disabled", false);
+                                $('#inputShowResult').attr("disabled", false);
                                 $("#data tbody").html("");
                                 $.each(msg.dataRes, function(i, item){
                                     var newRow = '<tr>'

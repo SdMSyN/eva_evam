@@ -138,12 +138,12 @@
         
         <form id="formAddPreg">
             <div class="row text-center"><br>
-                <button class="btn btn-primary" type="submit">Añadir a examen</button>
+                <button class="btn btn-primary" type="submit">Añadir a cuestionario: <?= $nameExa; ?></button>
                 <input type="hidden" name="inputIdExam" value="<?=$idExam;?>" >
             </div>
             <div class="table-responsive">
                 <table class="table table-striped" id="data">
-                    <caption>Tus exámenes</caption>
+                    <caption>Preguntas de tu materia</caption>
                     <thead>
                         <tr>
                             <th><label for="checkTodos"><input type="checkbox" id="checkTodos" ></label></th>
