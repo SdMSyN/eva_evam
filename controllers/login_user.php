@@ -11,7 +11,9 @@ $perfil = 0;
 
 /*Lo buscamos en la tabla profesores */
 $sqlGetUser = "SELECT $tProf.id as id, $tProf.informacion_id as idInfo, "
-        . "$tProf.nombre as name, $tProf.paquete_id as idPaq FROM $tProf "
+        . "$tProf.nombre as name, $tProf.paquete_id as idPaq, $tPaq.cant_alum as cantAlum "
+        . "FROM $tProf "
+        . "INNER JOIN $tPaq ON $tPaq.id = $tProf.paquete_id "
         . "WHERE BINARY $tProf.user='$user' AND BINARY $tProf.pass='$pass' ";
 $resGetUser = $con->query($sqlGetUser);
 if ($resGetUser->num_rows > 0) {
@@ -20,6 +22,7 @@ if ($resGetUser->num_rows > 0) {
     $_SESSION['userId'] = $rowGetUser['id'];
     $_SESSION['userName'] = $rowGetUser['name'];
     $_SESSION['idPaq'] = $rowGetUser['idPaq'];
+    $_SESSION['cantAlum'] = $rowGetUser['cantAlum'];
     $_SESSION['perfil'] = 2;
     $perfil = 2;
     $ban = true;

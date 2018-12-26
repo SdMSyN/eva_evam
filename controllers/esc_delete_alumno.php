@@ -16,7 +16,13 @@
         $idGAlum = $rowGetIdGAlum['id'];
         $sqlDeleteIdGAlum = "DELETE FROM $tGrupoAlums WHERE id='$idGAlum' ";
         if($con->query($sqlDeleteIdGAlum) === TRUE){
-            $ban = true;
+            $sqlDeleteAlum = "UPDATE $tAlum SET activo=0 WHERE id='$idAlum' ";
+            if($con->query($sqlDeleteAlum) === TRUE){
+                $ban = true;
+            }else{
+                $banTmp = false;
+                $msgErr .= 'Error al borrar alumno.'.$con->error;
+            }
         }else{
             $banTmp = false;
             $msgErr .= 'Error al borrar alumno.'.$con->error;

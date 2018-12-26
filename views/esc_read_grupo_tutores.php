@@ -14,7 +14,7 @@
     include ('navbar.php');
     if (!isset($_SESSION['sessU'])){
         echo '<div class="row><div class="col-sm-12 text-center"><h2>No tienes permiso para entrar a esta sección. ━━[○･｀Д´･○]━━ </h2></div></div>';
-    }else if($_SESSION['perfil'] != 1){
+    }else if($_SESSION['perfil'] != 2){
         echo '<div class="row"><div class="col-sm-12 text-center"><h2>¿Estás tratando de acceder? No es tu perfil o(´^｀)o </h2></div></div>';
     }else {
         $idUser = $_SESSION['userId'];

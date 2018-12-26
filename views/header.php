@@ -20,6 +20,8 @@
         <script src="../assets/js/jquery.validate.min.js"></script>
         <script src="../assets/js/additional-methods.min.js"></script>
         <script src="../assets/js/jquery-validate.bootstrap-tooltip.min.js"></script>
+        <!-- type a head -->
+        <script src="../assets/js/typeahead.min.js"></script>
 	
         <!-- impresión -->
         <!-- <script src="../assets/js/jquery.PrintArea.js"></script> -->
