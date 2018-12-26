@@ -3,7 +3,7 @@
     include('../config/variables.php');
     
     $idProf = $_POST['idProf'];
-    $idEsc = $_POST['idEsc'];
+    //$idEsc = $_POST['idEsc'];
     $aviso = $_POST['inputAviso'];
     $avisoTipo = $_POST['inputAvTipo'];
     $avisoDest = $_POST['inputAvDest']; //1=alums, 2=Tutos y 3=Ambos
@@ -15,8 +15,8 @@
     $arrNot = array();
 
     $sqlInsertAvisoInfo = "INSERT INTO $tAvInfo "
-            . "(nombre, tipo_aviso_id, dirigido_a, creado_por, perfil_creador, escuela_id, creado) "
-            . "VALUES ('$aviso', '$avisoTipo', '$avisoDest', '$idProf', '2', '$idEsc', '$dateNow')";
+            . "(nombre, tipo_aviso_id, dirigido_a, creado_por, perfil_creador, profesor_id, creado) "
+            . "VALUES ('$aviso', '$avisoTipo', '$avisoDest', '$idProf', '2', '$idProf', '$dateNow')";
     if($con->query($sqlInsertAvisoInfo) === TRUE){
         $idAviso = $con->insert_id;
         //Recorrer grupos y obtener los id de los alumnos
@@ -89,7 +89,7 @@
                 }
             }else{
                 $ban = false;
-                $msgErr .= 'Error: No existen alumnos en ésta escuela.';
+                $msgErr .= 'Error: No existen alumnos en éste grupo.';
             }
         }//end for
         

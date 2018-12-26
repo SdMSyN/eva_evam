@@ -19,7 +19,7 @@
     }else {
         $idUser = $_SESSION['userId'];
         $idPerfil = $_SESSION['perfil'];
-        $idEsc = $_SESSION['idEsc'];
+        //$idEsc = $_SESSION['idEsc'];
         $idGrupo = $_POST['inputGrupo'];
         
         $optAvTipo = '<option></option>';
@@ -40,7 +40,6 @@
         <div class="row text-center"><h1>Crear Notificación</h1></div>
         <br>
         <form id="formAdd" class="form-horizontal">
-            <input type="hidden" name="idEsc" value="<?=$idEsc;?>" >
             <input type="hidden" name="idProf" value="<?=$idUser;?>" >
             <div class="row">
                 <div class="form-group">

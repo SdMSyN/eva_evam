@@ -19,7 +19,7 @@
     }else {
         $idUser = $_SESSION['userId'];
         $idPerfil = $_SESSION['perfil'];
-        $idEsc = $_SESSION['idEsc'];
+        //$idEsc = $_SESSION['idEsc'];
         
         $optAvTipo = '<option></option>';
         $sqlGetAvTipo = "SELECT * FROM $tAvTipo ";
@@ -40,7 +40,7 @@
         <br>
         <form id="formAdd" class="form-horizontal">
             <input type="hidden" name="idProf" value="<?=$idUser;?>" >
-            <input type="hidden" name="idEsc" value="<?=$idEsc;?>" >
+            <!-- <input type="hidden" name="idEsc" value="<?=$idEsc;?>" > -->
             <div class="row">
                 <div class="form-group">
                     <label class="col-sm-4 control-label" for="inputAviso">
@@ -177,7 +177,7 @@
                 $("#data input:checkbox").prop('checked', $(this).prop("checked"));
             });
             
-            //añadir nuevo examen
+            //añadir nueva notificación
             $('#formAdd').validate({
                 rules: {
                     inputAviso: {required: true},

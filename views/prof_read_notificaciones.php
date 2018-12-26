@@ -47,7 +47,7 @@
                         <th><span title="tipo">Tipo</span></th>
                         <th><span title="dirigido_a">Dirigido A</span></th>
                         <th><span title="creado">Fecha</span></th>
-                        <th><span title="creado_por">Creador</span></th>
+                        <!-- <th><span title="creado_por">Creador</span></th> -->
                         <th>Detalles</th>
                         <th># Alumnos</th>
                         <th># Tutores</th>
@@ -148,7 +148,7 @@
                                     else if(msg.dataRes[i].dirigido == 3) newRow += '<td>Alumnos y Tutores</td>';
                                     else newRow += '<td>Ninguno</td>';
                                     newRow += '<td>'+msg.dataRes[i].fecha+'</td>'
-                                    +'<td>'+msg.dataRes[i].creador+'</td>'
+                                    //+'<td>'+msg.dataRes[i].creador+'</td>'
                                     +'<td><a href="prof_read_notificaciones_details.php?idAv='+msg.dataRes[i].id+'" class="btn btn-default" >'
                                     +'<span class="glyphicon glyphicon-stats"></span></a></td>';
                                     newRow += '<td>'+msg.dataRes[i].numAlum+' ('+msg.dataRes[i].numAlumEnt+')</td>';
