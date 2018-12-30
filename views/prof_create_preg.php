@@ -65,23 +65,6 @@
                     </div>
                 </div><!-- end form-group -->
                 <div class="form-group">
-                    <label for="input" class="col-sm-3 control-label">¿Compartir?</label>
-                    <div class="col-sm-9">
-                        <label class="radio-inline">
-                            <input type="radio" name="inputCompartir" id="inlineRadio1" value="1" checked> Si
-                        </label>
-                        <label class="radio-inline">
-                            <input type="radio" name="inputCompartir" id="inlineRadio2" value="0"> No
-                        </label>
-                    </div>
-                </div><!-- end form-group -->
-                <div class="form-group">
-                    <label for="input" class="col-sm-3 control-label">Valor de la pregunta</label>
-                    <div class="col-sm-9">
-                        <select class="form-control" name="inputValor" id="inputValor"><?= $optValor; ?></select> 
-                    </div>
-                </div><!-- end form-group -->
-                <div class="form-group">
                     <label class="col-sm-3 control-label">Selecciona tipo de respuestas</label>
                     <div class="col-sm-9">
                         <select class="form-control" id="respType" name="respType">
@@ -132,17 +115,14 @@
             $("#formAdd").validate({
                 rules: {
                     inputPreg: {required: true},
-                    inputValor: {required: true},
                     respType: {required: true}
                 },
                 messages: {
                     inputPreg: "Campo obligatorio",
-                    inputValor: "¿No tienen ningún valor tus preguntas?",
                     respType: "Selecciona que tipo de respuestas son"
                 },
                 tooltip_options:{
                     inputPreg: {trigger: "focus", placement: "bottom"},
-                    inputValor: {trigger: "focus", placement: "bottom"},
                     respType: {trigger: "focus", placement: "bottom"}
                 },
                 submitHandler: function(form){

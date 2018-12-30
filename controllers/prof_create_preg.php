@@ -15,8 +15,8 @@
     //Información de la pregunta
     $preg1 = addslashes($_POST['inputPreg']);
     $filePreg1 = (isset($_FILES['files'])) ? $_FILES['files']['name'] : null;//imagen o audio opcional
-    $compartir = $_POST['inputCompartir'];
-    $valorPreg = $_POST['inputValor'];
+    $compartir = 2;
+    $valorPreg = 1;
     $typeResp = $_POST['respType'];
     $ban = true; $banImg = true; $msgErr = '';
     $respPreg1 = array();

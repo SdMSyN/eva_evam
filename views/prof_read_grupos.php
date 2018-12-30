@@ -71,7 +71,9 @@
                     <form id="formAdd" name="formAdd">
                         <div class="modal-body">
                             <div class="form-group">
-                                <input type="text" name="inputIdUser" value="<?= $idUser; ?>" >
+                                <input type="hidden" name="inputIdUser" value="<?= $idUser; ?>" >
+                                <input type="hidden" name="inputCantAlums" value="<?= $cantAlum; ?>" >
+                                <input type="hidden" name="inputAlums" id="inputAlums" >
                             </div>
                             <div class="form-group">
                                 <label for="inputNivel">Nivel: </label>
@@ -150,8 +152,9 @@
                                     +'</tr>';
                                 $(newRow).appendTo("#data tbody");
                            });
-                           var rowTotal = '<tr><td colspan="5" class="text-right"><b>Total:</b></td><td>'+msg.totalAlum+'</td><td></td><td></td></tr>';
+                           var rowTotal = '<tr><td colspan="5" class="text-right"><b>Total:</b></td><td>'+msg.totalAlum+' de <?= $cantAlum; ?></td><td></td><td></td></tr>';
                            $(rowTotal).appendTo("#data tbody");
+                           $("#modalAdd #inputAlums").val(msg.totalAlum);
                        }else{
                            var newRow = '<tr><td></td><td>'+msg.msgErr+'</td></tr>';
                            $("#data tbody").html(newRow);
@@ -277,7 +280,7 @@
                     inputGrupo: {required: true},
                     inputTurno: {required: true},
                     inputMat: {required: true},
-                    inputFile: {required: true, extension: "csv"}
+                    inputFile: {extension: "csv"}
                 },
                 messages: {
                     inputNivel: "¿A qué nivel escolar pertenece?",
@@ -285,10 +288,7 @@
                     inputGrupo: "¿De qué grupo es?",
                     inputTurno: "¿Cuál es el turno?",
                     inputMat: "Selecciona la materia que impartirás",
-                    inputFile: { 
-                        required: "Se requiere un archivo",
-                        extension: "Solo se permite archivos *.csv (archivo separado por comas de Excel)"
-                    }
+                    inputFile: "Solo se permite archivos *.csv (archivo separado por comas de Excel)"
                 },
                 tooltip_options: {
                     inputNivel: {trigger: "focus", placement: "bottom"},

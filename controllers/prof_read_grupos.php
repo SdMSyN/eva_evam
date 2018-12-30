@@ -28,9 +28,11 @@
     if($resGetGrupos->num_rows > 0){
         while($rowGetGrupo = $resGetGrupos->fetch_assoc()){
             $idGMatProf = $rowGetGrupo['idGMatProf'];
-            $sqlGetNumAlumsGrupo = "SELECT COUNT(id) as numAlums "
+            $sqlGetNumAlumsGrupo = "SELECT COUNT($tGMatAlums.id) as numAlums "
                     . "FROM $tGMatAlums "
-                    . "WHERE grupo_materia_profesor_id = '$idGMatProf' ";
+                    . "INNER JOIN $tAlum ON $tAlum.id = $tGMatAlums.usuario_alumno_id "
+                    . "WHERE $tGMatAlums.grupo_materia_profesor_id = '$idGMatProf' "
+                    . "AND $tAlum.activo = '1' ";
             $resGetNumAlumsGrupo = $con->query($sqlGetNumAlumsGrupo);
             $rowGetNumAlumsGrupo = $resGetNumAlumsGrupo->fetch_assoc();
             $numAlums = $rowGetNumAlumsGrupo['numAlums'];
