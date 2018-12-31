@@ -60,8 +60,9 @@
                         <th><span title="id">Id</span></th>
                         <th><span title="idAlum">IdAlum</span></th>
                         <th><span title="nombre">Nombre</span></th>
-                        <th><span title="user">Usuario</span></th>
-                        <th><span title="pass">Contraseña</span></th>
+                        <!-- <th><span title="user">Usuario</span></th>
+                        <th><span title="pass">Contraseña</span></th> -->
+                        <th>Ver Datos</th>
                         <th>Modificar</th>
                         <th>Eliminar</th>
                     </tr>
@@ -163,6 +164,35 @@
             </div>
         </div>
         
+        <!-- Modal para ver datos de conexión  -->
+        <div class="modal fade" id="modalViewPass" tabindex="-1" role="dialog" aria-labellebdy="myModal" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">
+                            <span aria-hidden="true">&times;</span><span class="sr-only">Cerrar</span>
+                        </button>
+                        <h4 class="modal-title" id="exampleModalLabel">Datos de conexión</h4>
+                        <p class="msgModal"></p>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="inputName">Nombre: </label>
+                            <input class="form-control" id="inputName" name="inputName" disabled>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputUser">Usuario: </label>
+                            <input class="form-control" id="inputUser" name="inputUser" disabled>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputPass">Contraseña: </label>
+                            <input class="form-control" id="inputPass" name="inputPass" disabled>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
     </div>
 
     <script type="text/javascript">
@@ -212,8 +242,9 @@
                                          +'<td>'+msg.dataRes[i].id+'</td>'
                                          +'<td>'+msg.dataRes[i].idAlumno+'</td>'
                                          +'<td>'+msg.dataRes[i].nombre+'</td>'
-                                         +'<td>'+msg.dataRes[i].user+'</td>'
-                                         +'<td>'+msg.dataRes[i].pass+'</td>'
+                                         /*+'<td>'+msg.dataRes[i].user+'</td>'
+                                         +'<td>'+msg.dataRes[i].pass+'</td>'*/
+                                         +'<td><button type="button" class="btn btn-primary" id="viewPass" value="'+msg.dataRes[i].idAlumno+'" data-toggle="modal" data-target="#modalViewPass"><span class="glyphicon glyphicon-eye-open"></span></button></td>'
                                          +'<td><button type="button" class="btn btn-warning" id="update" value="'+msg.dataRes[i].idAlumno+'" data-toggle="modal" data-target="#modalUpd"><span class="glyphicon glyphicon-refresh"></span></button></td>'
                                          +'<td><button type="button" class="btn btn-danger" id="delete" value="'+msg.dataRes[i].idAlumno+'"><span class="glyphicon glyphicon-remove"></span></button></td>'
                                     +'</tr>';
@@ -239,6 +270,24 @@
                     ordenar = "&orderby="+$(this).attr("title")+" desc";
                 }
                 filtrar();
+            });
+            
+            //Al hacer clic en ver datos
+            $("#data").on("click", "#viewPass", function(){
+                var idAlum = $(this).val();
+                console.log("Alumno: "+idAlum);
+                $.ajax({
+                    type: "POST",
+                    url: "../controllers/get_alumno.php",
+                    data: {idAlum: idAlum},
+                    success: function(response){
+                        var msg = jQuery.parseJSON(response);
+                        console.log(response);
+                        $("#modalViewPass .modal-body #inputName").val(msg.dataRes[0].nombre);
+                        $("#modalViewPass .modal-body #inputUser").val(msg.dataRes[0].user);
+                        $("#modalViewPass .modal-body #inputPass").val(msg.dataRes[0].pass);
+                    }
+                })
             });
             
             //Al hacer clic en actualizar

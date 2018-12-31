@@ -15,7 +15,9 @@
         while($rowGetAlum = $resGetAlum->fetch_assoc()){
             $idAlumno = $rowGetAlum['id'];
             $nombre = $rowGetAlum['nombre'];
-            $arrAlumno[] = array('id'=>$idAlumno,'nombre'=>$nombre);
+            $user = $rowGetAlum['user'];
+            $pass = $rowGetAlum['pass'];
+            $arrAlumno[] = array('id'=>$idAlumno,'nombre'=>$nombre, 'user'=>$user, 'pass'=>$pass);
         }
     }else{
         $ban = false;
