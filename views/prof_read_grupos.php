@@ -49,7 +49,9 @@
                         <th><span title="turno">Turno</span></th>
                         <th><span title="materia">Materia</span></th>
                         <th><span title="numAlums">Núm. Alumnos</span></th>
+                        <th>Descargar alumnos</th>
                         <th>Ver alumnos</th>
+                        <th>Descargar tutores</th>
                         <th>Ver tutores</th>
                     </tr>
                 </thead>
@@ -147,7 +149,9 @@
                                     +'<td>'+msg.dataRes[i].turno+'</td>' 
                                     +'<td>'+msg.dataRes[i].materia+'</td>' 
                                     +'<td>'+msg.dataRes[i].numAlums+'</td>' 
+                                    +'<td><a href="../controllers/print_grupo_alums.php?idGrupo='+msg.dataRes[i].id+'" class="btn btn-default" target="_blank"><span class="glyphicon glyphicon-download"></span></a></td>'
                                     +'<td><a href="prof_read_grupo_alumno.php?idGrupo='+msg.dataRes[i].id+'" class="btn btn-default"><span class="glyphicon glyphicon-list"></span></a></td>'
+                                    +'<td><a href="../controllers/print_grupo_tuts.php?idGrupo='+msg.dataRes[i].id+'" class="btn btn-default" target="_blank"><span class="glyphicon glyphicon-download"></span></a></td>'
                                     +'<td><a href="esc_read_grupo_tutores.php?idGrupo='+msg.dataRes[i].id+'" class="btn btn-default"><span class="glyphicon glyphicon-list"></span></a></td>'
                                     +'</tr>';
                                 $(newRow).appendTo("#data tbody");
