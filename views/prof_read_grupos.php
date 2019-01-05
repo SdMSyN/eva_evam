@@ -47,7 +47,7 @@
                         <th><span title="grado">Grado</span></th>
                         <th><span title="nombre">Grupo</span></th>
                         <th><span title="turno">Turno</span></th>
-                        <th><span title="materia">Materia</span></th>
+                        <th><span title="materia">Área</span></th>
                         <th><span title="numAlums">Núm. Alumnos</span></th>
                         <th>Descargar alumnos</th>
                         <th>Ver alumnos</th>
@@ -100,7 +100,7 @@
                             </div>
                             <br>
                             <div class="form-group">
-                                <label for="inputMat">Materia: </label>
+                                <label for="inputMat">Área: </label>
                                 <select class="form-control" id="inputMat" name="inputMat"></select>
                             </div>
                             <br>

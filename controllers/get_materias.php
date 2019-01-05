@@ -9,7 +9,8 @@
     $idNivel = $_GET['idNivel'];
     $idGrado = $_GET['idGrado'];
     
-    $sqlGetMateria = "SELECT * FROM $tBMat WHERE nivel_escolar_id='$idNivel' AND nivel_grado_id='$idGrado' ";
+    //$sqlGetMateria = "SELECT * FROM $tBMat WHERE nivel_escolar_id='$idNivel' AND nivel_grado_id='$idGrado' ";
+    $sqlGetMateria = "SELECT * FROM $tBMat WHERE nivel_escolar_id='$idNivel' ";
     
     //Ordenar ASC y DESC
     $vorder = (isset($_POST['orderby'])) ? $_POST['orderby'] : "";

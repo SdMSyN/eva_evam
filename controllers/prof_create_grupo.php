@@ -160,7 +160,11 @@ if ($file != "") {
                         //Creamos clave usuario y contraseña
                         $nombre = $datos[0] . ' ' . $datos[1] . ' ' . $datos[2];
                         $apTmp = str_replace(' ', '', $datos[0]);
-                        $clave = strtolower($datos[2]{0}) . strtolower($apTmp) . strtolower($datos[1]{0}) . $getNumAlum;
+                        $cad1 = preg_replace("/[^a-zA-Z0-9\_\-]+/", "", $datos[2]);
+                        $cad2 = preg_replace("/[^a-zA-Z0-9\_\-]+/", "", $apTmp);
+                        $cad3 = preg_replace("/[^a-zA-Z0-9\_\-]+/", "", $datos[1]);
+                        $clave = strtolower($cad1{0}).strtolower($cad2).strtolower($cad3{0}).$getNumAlums;
+                        //$clave = strtolower($datos[2]{0}) . strtolower($apTmp) . strtolower($datos[1]{0}) . $getNumAlum;
                         $clave2 = generar_clave(5);
                         //Insertamos informacion del alumno
                         $sqlInsertInfoAlumno = "INSERT INTO $tInfo (foto_perfil, creado, actualizado) "
@@ -267,9 +271,9 @@ if ($file != "") {
 // http://www.leonpurpura.com/tutoriales/generar-claves-aleatorias.html
 function generar_clave($longitud) {
     $cadena = "[^A-Z0-9]";
-    return substr(eregi_replace($cadena, "", md5(rand())) .
-            eregi_replace($cadena, "", md5(rand())) .
-            eregi_replace($cadena, "", md5(rand())), 0, $longitud);
+    return substr(preg_replace($cadena, "", md5(rand())) .
+            preg_replace($cadena, "", md5(rand())) .
+            preg_replace($cadena, "", md5(rand())), 0, $longitud);
 }
 
 ?>

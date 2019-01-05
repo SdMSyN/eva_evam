@@ -85,7 +85,7 @@
                     <form id="formUpd" name="formUpd">
                         <div class="modal-body">
                             <div class="form-group">
-                                <input type="text" name="inputIdUser" id="inputIdUser" >
+                                <input type="hidden" name="inputIdUser" id="inputIdUser" >
                                 <label for="inputName">Nombre: </label>
                                 <input class="form-control" id="inputName" name="inputName" >
                             </div>
