@@ -52,11 +52,16 @@
         </div>
         <div class="row text-center"><h1>Temas</h1></div>
         <div class="row placeholder text-center">
-            <div class="col-sm-12 placeholder">
+            <div class="col-sm-6 placeholder">
                 <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modalAdd">
                     Añadir nuevo Tema
                     <span class="glyphicon glyphicon-plus"></span>
                 </button>
+            </div>
+            <div class="col-sm-6 placeholder">
+                <a href="admin_create_banco_pregunta.php?idNivel=<?=$idNivel;?>&idGrado=<?=$idGrado?>&idMateria=<?=$idMateria;?>&idBloque=<?=$idBloque;?>" class="btn btn-primary btn-lg">
+                    Añadir nueva pregunta <span class="glyphicon glyphicon-plus"></span>
+                </a>
             </div>
         </div>
         <br>
@@ -77,6 +82,7 @@
                         <th><span title="nombre">Nombre</span></th>
                         <th><span title="created">Creado</span></th>
                         <th>Ver Subtemas</th>
+                        <th>Ver Preguntas</th>
                     </tr>
                 </thead>
                 <tbody></tbody>
@@ -133,6 +139,7 @@
                                     +'<td>'+msg.dataRes[i].nombre+'</td>'   
                                     +'<td>'+msg.dataRes[i].creado+'</td>' 
                                     +'<td><a href="admin_read_banco_subtemas.php?idNivel='+<?=$idNivel;?>+'&idGrado='+<?=$idGrado;?>+'&idMateria='+<?=$idMateria;?>+'&idBloque='+<?=$idBloque;?>+'&idTema='+msg.dataRes[i].id+'" class="btn btn-default"><span class="glyphicon glyphicon-th-list"></span></a></td>'
+                                    +'<td><a href="admin_read_banco_preguntas.php?idNivel='+<?=$idNivel;?>+'&idGrado='+<?=$idGrado;?>+'&idMateria='+<?=$idMateria;?>+'&idBloque='+<?=$idBloque;?>+'" class="btn btn-default"><span class="glyphicon glyphicon-th-list"></span></a></td>'
                                     +'</tr>';
                                 $(newRow).appendTo("#data tbody");
                            });

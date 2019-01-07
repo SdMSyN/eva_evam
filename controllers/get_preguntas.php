@@ -6,8 +6,11 @@
     $msgErr = '';
     $ban = false;
     $idSubtema = $_GET['id'];
-    
-    $sqlGetPreguntas = "SELECT * FROM $tBPregs WHERE banco_subtema_id='$idSubtema' ";
+    $idBloque = $_GET['idBloque'];
+    if($idSubtema == 0)
+        $sqlGetPreguntas = "SELECT * FROM $tBPregs WHERE banco_bloque_id = '$idBloque' ";
+    else
+        $sqlGetPreguntas = "SELECT * FROM $tBPregs WHERE banco_subtema_id='$idSubtema' ";
     
     //Ordenar ASC y DESC
     $vorder = (isset($_POST['orderby'])) ? $_POST['orderby'] : "";

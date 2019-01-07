@@ -44,18 +44,28 @@
         $resGetNameBloque = $con->query($sqlGetNameBloque);
         $rowGetNameBloque = $resGetNameBloque->fetch_assoc();
         $nameBloque = $rowGetNameBloque['nombre'];
-        //Obtenemos Nombre Tema
-        $idTema = $_GET['idTema'];
-        $sqlGetNameTema = "SELECT nombre FROM $tBTema WHERE id='$idTema' ";
-        $resGetNameTema = $con->query($sqlGetNameTema);
-        $rowGetNameTema = $resGetNameTema->fetch_assoc();
-        $nameTema = $rowGetNameTema['nombre'];
-        //Obtenemos Nombre Subtema
-        $idSubtema = $_GET['idSubtema'];
-        $sqlGetNameSubtema = "SELECT nombre FROM $tBSubTema WHERE id='$idSubtema' ";
-        $resGetNameSubtema = $con->query($sqlGetNameSubtema);
-        $rowGetNameSubtema = $resGetNameSubtema->fetch_assoc();
-        $nameSubtema = $rowGetNameSubtema['nombre'];
+        if(isset($_GET['idTema'])){
+            //Obtenemos Nombre Tema
+            $idTema = $_GET['idTema'];
+            $sqlGetNameTema = "SELECT nombre FROM $tBTema WHERE id='$idTema' ";
+            $resGetNameTema = $con->query($sqlGetNameTema);
+            $rowGetNameTema = $resGetNameTema->fetch_assoc();
+            $nameTema = $rowGetNameTema['nombre'];
+        }else{
+            $idTema = 0;
+            $nameTema = "Sin tema";
+        }
+        if(isset($_GET['idSubtema'])){
+            //Obtenemos Nombre Subtema
+            $idSubtema = $_GET['idSubtema'];
+            $sqlGetNameSubtema = "SELECT nombre FROM $tBSubTema WHERE id='$idSubtema' ";
+            $resGetNameSubtema = $con->query($sqlGetNameSubtema);
+            $rowGetNameSubtema = $resGetNameSubtema->fetch_assoc();
+            $nameSubtema = $rowGetNameSubtema['nombre'];
+        }else{
+            $idSubtema = 0;
+            $nameSubtema = "Sin subtema";
+        }
         
         $optValor = '<option></option>';
         for($i=1; $i<=10; $i++){

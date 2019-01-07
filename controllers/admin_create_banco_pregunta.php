@@ -6,8 +6,8 @@
     ///Inputs ocultos
     $idMateria = $_POST['idMateria'];
     $idBloque = $_POST['idBloque'];
-    $idTema = $_POST['idTema'];
-    $idSubtema = $_POST['idSubtema'];
+    $idTema = ($_POST['idTema'] == 0) ? NULL : $_POST['idTema'];
+    $idSubtema = ($_POST['idSubtema'] == 0) ? NULL : $_POST['idSubtema'];
     $idUser = $_POST['idUser'];
     $idPerfil = $_POST['idPerfil'];
     
@@ -150,7 +150,23 @@
             $nameFile1 = $keyPregExam.".".$extPreg1[1];
             $ruta1 = "../".$filesExams."/".$nameFile1;
             $move1 = @move_uploaded_file($_FILES['files']['tmp_name'], $ruta1);
-            $sqlInsertPreg = "INSERT INTO $tBPregs "
+            /*$sqlInsertPreg = "INSERT INTO $tBPregs "
+                    . "(nombre, archivo, valor_preg, tipo_resp, "
+                    . "banco_materia_id, banco_bloque_id, banco_tema_id, banco_subtema_id, "
+                    . "creado_por_id, perfil_creador, compartir, creado, actualizado) "
+                    . "VALUES "
+                    . "('$preg1', '$nameFile1', '$valorPreg', '$typeResp', "
+                    . "'$idMateria', '$idBloque', '$idTema', '$idSubtema', "
+                    . "'$idUser', '$idPerfil', '$compartir', '$dateNow', '$dateNow')";*/
+            if($idTema == 0) $sqlInsertPreg = "INSERT INTO $tBPregs "
+                    . "(nombre, archivo, valor_preg, tipo_resp, "
+                    . "banco_materia_id, banco_bloque_id, "
+                    . "creado_por_id, perfil_creador, compartir, creado, actualizado) "
+                    . "VALUES "
+                    . "('$preg1', '$nameFile1', '$valorPreg', '$typeResp', "
+                    . "'$idMateria', '$idBloque', "
+                    . "'$idUser', '$idPerfil', '$compartir', '$dateNow', '$dateNow')";
+            else $sqlInsertPreg = "INSERT INTO $tBPregs "
                     . "(nombre, archivo, valor_preg, tipo_resp, "
                     . "banco_materia_id, banco_bloque_id, banco_tema_id, banco_subtema_id, "
                     . "creado_por_id, perfil_creador, compartir, creado, actualizado) "
@@ -159,7 +175,23 @@
                     . "'$idMateria', '$idBloque', '$idTema', '$idSubtema', "
                     . "'$idUser', '$idPerfil', '$compartir', '$dateNow', '$dateNow')";
         }else{ //si no hay imagen
-            $sqlInsertPreg = "INSERT INTO $tBPregs "
+            /*$sqlInsertPreg = "INSERT INTO $tBPregs "
+                    . "(nombre, valor_preg, tipo_resp, "
+                    . "banco_materia_id, banco_bloque_id, banco_tema_id, banco_subtema_id, "
+                    . "creado_por_id, perfil_creador, compartir, creado, actualizado) "
+                    . "VALUES "
+                    . "('$preg1', '$valorPreg', '$typeResp', "
+                    . "'$idMateria', '$idBloque', '$idTema', '$idSubtema', "
+                    . "'$idUser', '$idPerfil', '$compartir', '$dateNow', '$dateNow')";*/
+            if($idTema == 0) $sqlInsertPreg = "INSERT INTO $tBPregs "
+                    . "(nombre, valor_preg, tipo_resp, "
+                    . "banco_materia_id, banco_bloque_id, "
+                    . "creado_por_id, perfil_creador, compartir, creado, actualizado) "
+                    . "VALUES "
+                    . "('$preg1', '$valorPreg', '$typeResp', "
+                    . "'$idMateria', '$idBloque', "
+                    . "'$idUser', '$idPerfil', '$compartir', '$dateNow', '$dateNow')";
+            else $sqlInsertPreg = "INSERT INTO $tBPregs "
                     . "(nombre, valor_preg, tipo_resp, "
                     . "banco_materia_id, banco_bloque_id, banco_tema_id, banco_subtema_id, "
                     . "creado_por_id, perfil_creador, compartir, creado, actualizado) "
