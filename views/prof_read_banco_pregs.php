@@ -148,11 +148,11 @@
                         <tr>
                             <th><label for="checkTodos"><input type="checkbox" id="checkTodos" ></label></th>
                             <th><span title="id">Id</span></th>
-                            <th><span title="nombre">Nombre</span></th>
+                            <th><span title="nombre">Pregunta</span></th>
                             <th><span title="valor_preg">Valor pregunta</span></th>
                             <th><span title="tipo_resp">Tipo de respuesta</span></th>
                             <th><span title="creado_por_id">Creador</span></th>
-                            <th>Ver pregunta</th>
+                            <th>Ver</th>
                         </tr>
                     </thead>
                         <tbody></tbody>

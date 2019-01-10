@@ -60,7 +60,7 @@
             </div>
             <div class="col-sm-6 placeholder">
                 <a href="admin_create_banco_pregunta.php?idNivel=<?=$idNivel;?>&idGrado=<?=$idGrado?>&idMateria=<?=$idMateria;?>&idBloque=<?=$idBloque;?>" class="btn btn-primary btn-lg">
-                    Añadir nueva pregunta <span class="glyphicon glyphicon-plus"></span>
+                    Añadir nueva pregunta a la materia <span class="glyphicon glyphicon-plus"></span>
                 </a>
             </div>
         </div>

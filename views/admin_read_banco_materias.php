@@ -37,11 +37,11 @@
                 <img src="../assets/obj/loading.gif" height="300" width="400">
             </div>
         </div>
-        <div class="row text-center"><h1>Materias</h1></div>
+        <div class="row text-center"><h1>Áreas</h1></div>
         <div class="row placeholder text-center">
             <div class="col-sm-12 placeholder">
                 <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modalAdd">
-                    Añadir nueva materia
+                    Añadir nueva área
                     <span class="glyphicon glyphicon-plus"></span>
                 </button>
             </div>
@@ -54,14 +54,14 @@
                         $cadCap = '<a href="admin_read_banco_niveles.php">'.$nameNivel.'</a> => ';
                         $cadCap .= '<a href="admin_read_banco_grados.php?idNivel='.$idNivel.'">'.$nameGrado.'</a> ';
                     ?>
-                    <?= $cadCap; ?> => Materias
+                    <?= $cadCap; ?> => Áreas
                 </caption>
                 <thead>
                     <tr>
                         <th><span title="id">Id</span></th>
                         <th><span title="nombre">Nombre</span></th>
                         <th><span title="created">Creado</span></th>
-                        <th>Ver bloques</th>
+                        <th>Ver materias</th>
                     </tr>
                 </thead>
                 <tbody></tbody>

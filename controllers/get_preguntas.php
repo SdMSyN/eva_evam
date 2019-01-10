@@ -6,11 +6,14 @@
     $msgErr = '';
     $ban = false;
     $idSubtema = $_GET['id'];
+    $idTema = $_GET['idTema'];
     $idBloque = $_GET['idBloque'];
-    if($idSubtema == 0)
-        $sqlGetPreguntas = "SELECT * FROM $tBPregs WHERE banco_bloque_id = '$idBloque' ";
+    if($idTema != 0 && $idSubtema == 0)
+        $sqlGetPreguntas = "SELECT * FROM $tBPregs WHERE banco_tema_id = '$idTema' ";
+    else if($idSubtema != 0)
+        $sqlGetPreguntas = "SELECT * FROM $tBPregs WHERE banco_subtema_id = '$idSubtema' ";
     else
-        $sqlGetPreguntas = "SELECT * FROM $tBPregs WHERE banco_subtema_id='$idSubtema' ";
+        $sqlGetPreguntas = "SELECT * FROM $tBPregs WHERE banco_bloque_id='$idBloque' ";
     
     //Ordenar ASC y DESC
     $vorder = (isset($_POST['orderby'])) ? $_POST['orderby'] : "";

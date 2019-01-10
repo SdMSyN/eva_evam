@@ -41,6 +41,7 @@
     $pdf->Cell(40,7,utf8_decode($rowGetGrupo['turno']),1,1,'L');
     $pdf->Ln(7);
 
+    $pdf->SetFont('Arial','',12);
     $sqlGetClass = "SELECT $tGrupoAlums.alumno_id as idAlum, $tAlum.nombre as nombre, "
             . "$tAlum.user as user, $tAlum.pass as pass "
             . "FROM $tGrupoAlums "
@@ -53,8 +54,10 @@
             $nombre = $rowGetClass['nombre'];
             $user = $rowGetClass['user'];
             $pass = $rowGetClass['pass'];
-            $pdf->Cell(55,7,utf8_decode("http://evam.ide-educativo.com"),1,0,'L');
-            $pdf->Cell(65,7,utf8_decode($nombre),1,0,'L');
+            $pdf->SetFont('Arial','',9);
+            $pdf->Cell(45,7,utf8_decode("http://evam.ide-educativo.com"),1,0,'L');
+            $pdf->Cell(75,7,utf8_decode($nombre),1,0,'L');
+            $pdf->SetFont('Arial','',12);
             $pdf->Cell(45,7,utf8_decode($user),1,0,'L');
             $pdf->Cell(25,7,utf8_decode($pass),1,1,'L');
         }

@@ -6,8 +6,8 @@
     ///Inputs ocultos
     $idMateria = $_POST['idMateria'];
     $idBloque = $_POST['idBloque'];
-    $idTema = ($_POST['idTema'] == 0) ? NULL : $_POST['idTema'];
-    $idSubtema = ($_POST['idSubtema'] == 0) ? NULL : $_POST['idSubtema'];
+    $idTema = ($_POST['idTema'] == 0) ? 0 : $_POST['idTema'];
+    $idSubtema = ($_POST['idSubtema'] == 0) ? 0 : $_POST['idSubtema'];
     $idUser = $_POST['idUser'];
     $idPerfil = $_POST['idPerfil'];
     
@@ -166,7 +166,18 @@
                     . "('$preg1', '$nameFile1', '$valorPreg', '$typeResp', "
                     . "'$idMateria', '$idBloque', "
                     . "'$idUser', '$idPerfil', '$compartir', '$dateNow', '$dateNow')";
-            else $sqlInsertPreg = "INSERT INTO $tBPregs "
+            else{ 
+                if($idSubtema == 0) 
+                    $sqlInsertPreg = "INSERT INTO $tBPregs "
+                    . "(nombre, archivo, valor_preg, tipo_resp, "
+                    . "banco_materia_id, banco_bloque_id, banco_tema_id, "
+                    . "creado_por_id, perfil_creador, compartir, creado, actualizado) "
+                    . "VALUES "
+                    . "('$preg1', '$nameFile1', '$valorPreg', '$typeResp', "
+                    . "'$idMateria', '$idBloque', '$idTema', "
+                    . "'$idUser', '$idPerfil', '$compartir', '$dateNow', '$dateNow')";
+                else 
+                    $sqlInsertPreg = "INSERT INTO $tBPregs "
                     . "(nombre, archivo, valor_preg, tipo_resp, "
                     . "banco_materia_id, banco_bloque_id, banco_tema_id, banco_subtema_id, "
                     . "creado_por_id, perfil_creador, compartir, creado, actualizado) "
@@ -174,6 +185,7 @@
                     . "('$preg1', '$nameFile1', '$valorPreg', '$typeResp', "
                     . "'$idMateria', '$idBloque', '$idTema', '$idSubtema', "
                     . "'$idUser', '$idPerfil', '$compartir', '$dateNow', '$dateNow')";
+            }
         }else{ //si no hay imagen
             /*$sqlInsertPreg = "INSERT INTO $tBPregs "
                     . "(nombre, valor_preg, tipo_resp, "
@@ -191,14 +203,26 @@
                     . "('$preg1', '$valorPreg', '$typeResp', "
                     . "'$idMateria', '$idBloque', "
                     . "'$idUser', '$idPerfil', '$compartir', '$dateNow', '$dateNow')";
-            else $sqlInsertPreg = "INSERT INTO $tBPregs "
-                    . "(nombre, valor_preg, tipo_resp, "
-                    . "banco_materia_id, banco_bloque_id, banco_tema_id, banco_subtema_id, "
-                    . "creado_por_id, perfil_creador, compartir, creado, actualizado) "
-                    . "VALUES "
-                    . "('$preg1', '$valorPreg', '$typeResp', "
-                    . "'$idMateria', '$idBloque', '$idTema', '$idSubtema', "
-                    . "'$idUser', '$idPerfil', '$compartir', '$dateNow', '$dateNow')";
+            else{ 
+                if($idSubtema == 0)
+                    $sqlInsertPreg = "INSERT INTO $tBPregs "
+                        . "(nombre, valor_preg, tipo_resp, "
+                        . "banco_materia_id, banco_bloque_id, banco_tema_id, "
+                        . "creado_por_id, perfil_creador, compartir, creado, actualizado) "
+                        . "VALUES "
+                        . "('$preg1', '$valorPreg', '$typeResp', "
+                        . "'$idMateria', '$idBloque', '$idTema', "
+                        . "'$idUser', '$idPerfil', '$compartir', '$dateNow', '$dateNow')";
+                else
+                    $sqlInsertPreg = "INSERT INTO $tBPregs "
+                        . "(nombre, valor_preg, tipo_resp, "
+                        . "banco_materia_id, banco_bloque_id, banco_tema_id, banco_subtema_id, "
+                        . "creado_por_id, perfil_creador, compartir, creado, actualizado) "
+                        . "VALUES "
+                        . "('$preg1', '$valorPreg', '$typeResp', "
+                        . "'$idMateria', '$idBloque', '$idTema', '$idSubtema', "
+                        . "'$idUser', '$idPerfil', '$compartir', '$dateNow', '$dateNow')";
+            }
         }
         if($con->query($sqlInsertPreg) === TRUE){
             $idPreg = $con->insert_id;
@@ -238,7 +262,7 @@
         $cad = 'Se añadio con éxito la pregunta con sus respuestas';
         echo json_encode(array("error"=>0, "msgErr"=>$cad));
     }else{
-        echo json_encode(array("error"=>1, "msgErr"=>$msgErr));
+        echo json_encode(array("error"=>1, "msgErr"=>$msgErr, "sql"=>$sqlInsertPreg));
     }
     
 ?>

@@ -76,7 +76,7 @@
         <div class="row placeholder text-center">
             <div class="col-sm-12 placeholder">
                 <a href="admin_create_banco_pregunta.php?idNivel=<?=$idNivel;?>&idGrado=<?=$idGrado?>&idMateria=<?=$idMateria;?>&idBloque=<?=$idBloque;?>&idTema=<?=$idTema;?>&idSubtema=<?=$idSubtema;?>" class="btn btn-primary btn-lg">
-                    Añadir nueva pregunta <span class="glyphicon glyphicon-plus"></span>
+                    Añadir nueva pregunta al Subtema <span class="glyphicon glyphicon-plus"></span>
                 </a>
             </div>
         </div>
@@ -147,7 +147,7 @@
                $.ajax({
                    type: "POST",
                    data: ordenar, 
-                   url: "../controllers/get_preguntas.php?idBloque="+<?=$idBloque;?>+"&id="+<?=$idSubtema;?>,
+                   url: "../controllers/get_preguntas.php?idBloque="+<?=$idBloque;?>+"&id="+<?=$idSubtema;?>+"&idTema="+<?=$idTema;?>,
                    success: function(msg){
                        //alert(msg);
                        var msg = jQuery.parseJSON(msg);

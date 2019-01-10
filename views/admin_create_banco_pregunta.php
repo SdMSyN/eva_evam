@@ -69,6 +69,10 @@
         
         $optValor = '<option></option>';
         for($i=1; $i<=10; $i++){
+            if($i == 1){
+                $optValor .= '<option value="'.$i.'" selected>'.$i.'</option>';
+                continue;
+            }
             $optValor .= '<option value="'.$i.'">'.$i.'</option>';
         }
 ?>

@@ -163,7 +163,7 @@ if ($file != "") {
                         $cad1 = preg_replace("/[^a-zA-Z0-9\_\-]+/", "", $datos[2]);
                         $cad2 = preg_replace("/[^a-zA-Z0-9\_\-]+/", "", $apTmp);
                         $cad3 = preg_replace("/[^a-zA-Z0-9\_\-]+/", "", $datos[1]);
-                        $clave = strtolower($cad1{0}).strtolower($cad2).strtolower($cad3{0}).$getNumAlums;
+                        $clave = strtolower($cad1{0}).strtolower($cad2).strtolower($cad3{0}).$getNumAlum;
                         //$clave = strtolower($datos[2]{0}) . strtolower($apTmp) . strtolower($datos[1]{0}) . $getNumAlum;
                         $clave2 = generar_clave(5);
                         //Insertamos informacion del alumno
