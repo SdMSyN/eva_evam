@@ -31,35 +31,14 @@
         $idMateria = $rowGetExaInfo['banco_materia_id'];
         $nameExa = $rowGetExaInfo['nombre'];
         
-        //Obtenemos los tipos de respuesta
-        $optTypeResp = '<option></option>';
-        $optTypeResp .= '<option value="1">Opción multiple</option>';
-        $optTypeResp .= '<option value="2">Multiopción Multirespuesta</option>';
-        $optTypeResp .= '<option value="3">Respuesta abierta</option>';
-        $optTypeResp .= '<option value="4">Respuesta exacta</option>';
-        //Optenemos los creadores
-        $sqlGetCreadores = "SELECT DISTINCT $tBPregs.creado_por_id, $tBPregs.perfil_creador "
-                . "FROM $tBPregs WHERE $tBPregs.compartir=1 AND $tBPregs.banco_materia_id='$idMateria' ";
-        $resGetCreadores = $con->query($sqlGetCreadores);
-        $optCreador = '<option></option>';
-        if($resGetCreadores->num_rows > 0){
-            while($rowGetCreador = $resGetCreadores->fetch_assoc()){
-                $idCreador = $rowGetCreador['creado_por_id'];
-                $idPerfil = $rowGetCreador['perfil_creador'];
-                $tableUser = ($idPerfil == 10) ? $tAdm : $tProf;
-                $sqlGetNameCreador = "SELECT nombre FROM $tableUser WHERE id='$idCreador' ";
-                $resGetNameCreador = $con->query($sqlGetNameCreador);
-                $rowGetNameCreador = $resGetNameCreador->fetch_assoc();
-                $optCreador .= ($idPerfil == 10) ? '<option value="'.$idCreador.'">Plataforma</option>' : '<option value="'.$idCreador.'">'.$rowGetNameCreador['nombre'].'</option>';
-            }
+        //Obtenemos los niveles escolares
+        $sqlGetNiveles = "SELECT id, nombre FROM $tNivEsc";
+        $resGetNiveles = $con->query($sqlGetNiveles);
+        $optNiv = '<option></option>';
+        while($rowGetNiveles = $resGetNiveles->fetch_assoc()){
+            $optNiv .= '<option value="'.$rowGetNiveles['id'].'">'.$rowGetNiveles['nombre'].'</option>';
         }
-        //Obtenemos los bloques de la materia
-        $sqlGetBloques = "SELECT id, nombre FROM $tBBloq WHERE banco_materia_id='$idMateria' ";
-        $resGetBloques = $con->query($sqlGetBloques);
-        $optBloque = '<option></option>';
-        while($rowGetBloque = $resGetBloques->fetch_assoc()){
-            $optBloque .= '<option value="'.$rowGetBloque['id'].'">'.$rowGetBloque['nombre'].'</option>';
-        }
+        
         
 ?>
 
@@ -72,59 +51,39 @@
         
         <div class="row">
             <form id="frm_filtro" method="post" action="" class="form-horizontal">
+                <input type="hidden" name="inputMateria" value="<?=$idMateria;?>" >  
                 <div class="row">
                     <div class="col-sm-3">
                         <div class="form-group">
-                            <input type="hidden" name="inputMateria" value="<?=$idMateria;?>" >
-                            <label class="col-sm-4 control-label" for="inputNombre">Nombre</label>
-                            <div class="col-sm-8"><input type="text" class="form-control" name="inputNombre" id="inputNombre"></div>
-                        </div>
-                    </div>
-                    <div class="col-sm-3">
-                        <div class="form-group">
-                            <label class="col-sm-4 control-label" for="inputTypeResp">Tipo de respuesta</label>
+                            <label class="col-sm-4 control-label" for="inputNiveles">Niveles</label>
                             <div class="col-sm-8">
-                                <select id="inputTypeResp" name="inputTypeResp" class="form-control">
-                                    <?=$optTypeResp;?>
+                                <select id="inputNiveles" name="inputNiveles" class="form-control">
+                                    <?=$optNiv;?>
                                 </select>
                             </div>
                         </div>
                     </div>
                     <div class="col-sm-3">
                         <div class="form-group">
-                            <label class="col-sm-4 control-label" for="inputCreador">Creador</label>
+                            <label class="col-sm-4 control-label" for="inputAreas">Áreas</label>
                             <div class="col-sm-8">
-                                <select id="inputCreador" name="inputCreador" class="form-control">
-                                    <?=$optCreador;?>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                </div><!-- end row -->
-                <div class="row">
-                    <div class="col-sm-3">
-                        <div class="form-group">
-                            <label class="col-sm-4 control-label" for="inputBloque">Bloques</label>
-                            <div class="col-sm-8">
-                                <select id="inputBloque" name="inputBloque" class="form-control">
-                                    <?=$optBloque;?>
-                                </select>
+                                <select id="inputAreas" name="inputAreas" class="form-control"></select>
                             </div>
                         </div>
                     </div>
                     <div class="col-sm-3">
                         <div class="form-group">
-                            <label class="col-sm-4 control-label" for="inputTema">Temas</label>
+                            <label class="col-sm-4 control-label" for="inputMaterias">Materías</label>
                             <div class="col-sm-8">
-                                <select id="inputTema" name="inputTema" class="form-control"></select>
+                                <select id="inputMaterias" name="inputMaterias" class="form-control"></select>
                             </div>
                         </div>
                     </div>
                     <div class="col-sm-3">
                         <div class="form-group">
-                            <label class="col-sm-4 control-label" for="inputSubtema">Subtemas</label>
+                            <label class="col-sm-4 control-label" for="inputTemas">Temas</label>
                             <div class="col-sm-8">
-                                <select id="inputSubtema" name="inputSubtema" class="form-control"></select>
+                                <select id="inputTemas" name="inputTemas" class="form-control"></select>
                             </div>
                         </div>
                     </div>
@@ -184,7 +143,7 @@
         $('#loading').hide();
         var ordenar = '';
         $(document).ready(function(){
-            filtrar();
+            //filtrar();
             function filtrar(){
                $.ajax({
                    type: "POST",
@@ -244,56 +203,77 @@
             // boton cancelar
             $("#btncancel").click(function(){ 
                 //$("#frm_filtro #calle").find("option[value='0']").attr("selected",true);
-                $("#frm_filtro #inputNombre").val('');
-                $("#frm_filtro #inputTypeResp").val('');
-                $("#frm_filtro #inputCreador").val('');
-                $("#frm_filtro #inputBloque").val('');
-                $("#frm_filtro #inputTema").val('');
-                $("#frm_filtro #inputSubtema").val('');
+                $("#frm_filtro #inputNiveles").val('');
+                $("#frm_filtro #inputAreas").val('');
+                $("#frm_filtro #inputMaterias").val('');
+                $("#frm_filtro #inputTemas").val('');
                 filtrar() 
             });
                 
-           //Obtener Temas apartir del bloque
-            $("#inputBloque").on("change", function(){
+            //Obtener las áreas a partir del nivel escolar
+            $("#inputNiveles").on("change", function(){
                 $.ajax({
-                    url:"../controllers/get_temas.php?id="+$("#inputBloque").val(),
+                    url:"../controllers/get_materias.php?idNivel="+$("#inputNiveles").val()+"&idGrado=0",
                     type: "POST",
                     success: function(opciones){
+                        console.log(opciones);
                         var msg = jQuery.parseJSON(opciones);
                         if(msg.error == 0){
-                            $("#inputTema").html("");
-                            $("#inputSubtema").html("");
-                            $("#inputTema").html('<option></option>');
+                            $("#inputTemas").html("");
+                            $("#inputMaterias").html("");
+                            $("#inputAreas").html('<option></option>');
                             $.each(msg.dataRes, function(i, item){
                                 var newOpt = '<option value="'+msg.dataRes[i].id+'">'+msg.dataRes[i].nombre+'</option>';
-                                $(newOpt).appendTo("#inputTema");
+                                $(newOpt).appendTo("#inputAreas");
                             });
                         }else{
                             $("#inputTema").html("");
                             $("#inputSubtema").html("");
-                            $("#inputTema").html("<option>"+msg.msgErr+"</option>");
+                            $("#inputAreas").html("<option>"+msg.msgErr+"</option>");
                         }
                     }
                 })
             });
             
-            //Obtener SubTemas apartir del Tema
-            $("#inputTema").on("change", function(){
+            //Obtener las materias a partir de las áreas
+            $("#inputAreas").on("change", function(){
                 $.ajax({
-                    url:"../controllers/get_subtemas.php?id="+$("#inputTema").val(),
+                    url:"../controllers/get_bloques.php?idMateria="+$("#inputAreas").val(),
                     type: "POST",
                     success: function(opciones){
+                        console.log(opciones);
                         var msg = jQuery.parseJSON(opciones);
                         if(msg.error == 0){
-                            $("#inputSubtema").html("");
-                            $("#inputSubtema").html('<option></option>');
+                            $("#inputTemas").html("");
+                            $("#inputMaterias").html('<option></option>');
                             $.each(msg.dataRes, function(i, item){
                                 var newOpt = '<option value="'+msg.dataRes[i].id+'">'+msg.dataRes[i].nombre+'</option>';
-                                $(newOpt).appendTo("#inputSubtema");
+                                $(newOpt).appendTo("#inputMaterias");
                             });
                         }else{
-                            $("#inputSubtema").html("");
-                            $("#inputSubtema").html("<option>"+msg.msgErr+"</option>");
+                            $("#inputTemas").html("");
+                            $("#inputMaterias").html("<option>"+msg.msgErr+"</option>");
+                        }
+                    }
+                })
+            });
+
+            //Obtener los temas a partir de la materia
+            $("#inputMaterias").on("change", function(){
+                $.ajax({
+                    url:"../controllers/get_temas.php?id="+$("#inputMaterias").val(),
+                    type: "POST",
+                    success: function(opciones){
+                        console.log(opciones);
+                        var msg = jQuery.parseJSON(opciones);
+                        if(msg.error == 0){
+                            $("#inputTemas").html('<option></option>');
+                            $.each(msg.dataRes, function(i, item){
+                                var newOpt = '<option value="'+msg.dataRes[i].id+'">'+msg.dataRes[i].nombre+'</option>';
+                                $(newOpt).appendTo("#inputTemas");
+                            });
+                        }else{
+                            $("#inputTemas").html("<option>"+msg.msgErr+"</option>");
                         }
                     }
                 })
@@ -303,9 +283,7 @@
             $("#checkTodos").change(function () {
                 $("input:checkbox").prop('checked', $(this).prop("checked"));
             });
-                
-            
-            
+
             $('#formAddPreg').validate({
                 rules: {
                     'checkIdPreg[]': {required: true}

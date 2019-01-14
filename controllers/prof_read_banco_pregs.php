@@ -9,27 +9,31 @@
     $arrPregs = array();
     $idMat = $_POST['inputMateria'];
     
-    $sqlGetPregs = "SELECT * FROM $tBPregs WHERE banco_materia_id='$idMat' ";
+    $sqlGetPregs = "SELECT * FROM $tBPregs WHERE 1=1 ";
 
-    $inName = $_POST['inputNombre'];
+    /*$inName = $_POST['inputNombre'];
     $inTipoResp = $_POST['inputTypeResp'];
-    $inCreador = $_POST['inputCreador'];
-    $inBloque = $_POST['inputBloque'];
-    $inTema = isset($_POST['inputTema']) ? $_POST['inputTema'] : "";
-    $inSubtema = isset($_POST['inputSubtema']) ? $_POST['inputSubtema'] : "";
+    $inCreador = $_POST['inputCreador'];*/
+    $inNivs = isset($_POST['inputNiveles']) ? $_POST['inputNiveles'] : "";
+    $inAreas = isset($_POST['inputAreas']) ? $_POST['inputAreas'] : "";
+    $inMats = isset($_POST['inputMaterias']) ? $_POST['inputMaterias'] : "";
+    $inTemas = isset($_POST['inputTemas']) ? $_POST['inputTemas'] : "";
     
-    $sqlGetPregs .= ($inName != "") ? "AND nombre LIKE '%$inName%' " : "";
+    /*$sqlGetPregs .= ($inName != "") ? "AND nombre LIKE '%$inName%' " : "";
     $sqlGetPregs .= ($inTipoResp != "") ? "AND tipo_resp='$inTipoResp' " : "";
     $sqlGetPregs .= ($inCreador != "") ? "AND creado_por_id='$inCreador' " : "";
-    $sqlGetPregs .= ($inBloque != "") ? "AND banco_bloque_id='$inBloque' " : "";
-    $sqlGetPregs .= ($inTema != "") ? "AND banco_tema_id='$inTema' " : "";
-    $sqlGetPregs .= ($inSubtema != "") ? "AND banco_subtema_id='$inSubtema' " : "";
+    $sqlGetPregs .= ($inBloque != "") ? "AND banco_bloque_id='$inBloque' " : "";*/
+    //$sqlGetPregs .= ($inNivs != "") ? "AND banco_tema_id='$inNivs' " : "";
+    $sqlGetPregs .= ($inAreas != "") ? "AND banco_materia_id='$inAreas' " : "";
+    $sqlGetPregs .= ($inMats != "") ? "AND banco_bloque_id='$inMats' " : "";
+    $sqlGetPregs .= ($inTemas != "") ? "AND banco_tema_id='$inTemas' " : "";
     
     //Ordenar ASC y DESC
     $vorder = (isset($_POST['orderby'])) ? $_POST['orderby'] : "";
     if($vorder != ''){
         $sqlGetPregs .= " ORDER BY ".$vorder;
     }
+    $sqlGetPregs .= " LIMIT 20";
     //echo $sqlGetPregs;
     $resGetPregs = $con->query($sqlGetPregs);
     if($resGetPregs->num_rows > 0){
