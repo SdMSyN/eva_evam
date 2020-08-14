@@ -220,3 +220,61 @@ thead > tr > td:last-of-type,th:last-of-type{
 .tt-suggestion p {
   margin: 0;
 }
+
+/* Nuevos colores */
+.navbar-default {
+    background: #068BEA;
+}
+
+.btn-primary {
+    background: #fd8917;
+    padding: 15px 20px;
+    font-weight: bold;
+    border: none;
+}
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active {
+    background: #068BEA;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    transform: translateY(-3px);
+    transition: all .2s ease-in-out;
+}
+
+.navbar-default .navbar-nav>li>a {
+    color: #FFFFFF;
+}
+.navbar-default .navbar-nav>li>a:hover {
+    color: #fd8917;
+}
+
+#data th {
+    background-color: #068BEA;
+    color: whitesmoke;
+}
+thead > tr > td, th {
+    background-color: #068BEA;
+    color: whitesmoke;
+}
+.table>tbody>tr {
+    background-color: #f9f9f9;
+}
+
+body {
+    background: url(../obj/header2.png);
+    background-size: cover;
+    background-position: top center;
+    text-align: center;
+}
+
+a {
+    color: #FFFFFF;
+    text-decoration: none;
+}
+a:hover {
+    color: #fd8917;
+    text-decoration: none;
+}
+a>span{
+    color: #068BEA;
+}
