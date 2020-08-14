@@ -437,7 +437,7 @@
             //Buscar alumnos
             $('input.typeahead').typeahead({
                 name: 'searchStudent',
-                remote: '../controllers/prof_search_alumno.php?query=%QUERY&idGrupo=<?= $idGroup; ?>',
+                remote: '../controllers/prof_search_alumno.php?query=%QUERY&idGrupo=<?= $idGroup; ?>&idProf=<?= $idUser; ?>',
                 limit: 5
             });
             
@@ -448,7 +448,7 @@
                 $.ajax({
                     type: "POST",
                     url: "../controllers/searchStudentQuery.php",
-                    data: {queryStudent: queryStudent, idGrupo: <?= $idGroup; ?>},
+                    data: {queryStudent: queryStudent, idGrupo: <?= $idGroup; ?> },
                     success: function(msg){
                         console.log(msg);
                         var msg = jQuery.parseJSON(msg);
