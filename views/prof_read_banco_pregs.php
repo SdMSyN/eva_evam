@@ -221,7 +221,7 @@
                         if(msg.error == 0){
                             $("#inputTemas").html("");
                             $("#inputMaterias").html("");
-                            $("#inputAreas").html('<option></option>');
+                            $("#inputAreas").html('<option value="0"></option>');
                             $.each(msg.dataRes, function(i, item){
                                 var newOpt = '<option value="'+msg.dataRes[i].id+'">'+msg.dataRes[i].nombre+'</option>';
                                 $(newOpt).appendTo("#inputAreas");

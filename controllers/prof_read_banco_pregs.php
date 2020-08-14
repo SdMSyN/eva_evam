@@ -15,7 +15,7 @@
     $inTipoResp = $_POST['inputTypeResp'];
     $inCreador = $_POST['inputCreador'];*/
     $inNivs = isset($_POST['inputNiveles']) ? $_POST['inputNiveles'] : "";
-    $inAreas = isset($_POST['inputAreas']) ? $_POST['inputAreas'] : "";
+    $inAreas = ( isset($_POST['inputAreas']) && $_POST['inputAreas'] != 0 ) ? $_POST['inputAreas'] : "";
     $inMats = isset($_POST['inputMaterias']) ? $_POST['inputMaterias'] : "";
     $inTemas = isset($_POST['inputTemas']) ? $_POST['inputTemas'] : "";
     

@@ -24,8 +24,8 @@
             <h2 class="form-signin-heading">Iniciar Sesión</h2>
             <!--<div class="text-center"><img src="assets/obj/carousel_0.jpg" alt="" width="75%" class="img-rounded"/></div>-->
             <div class="row msg"></div>
-            <label for="inputUser" class="sr-only">Correo</label>
-            <input type="text" id="inputUser" name="inputUser" class="form-control" placeholder="Correo" >
+            <label for="inputUser" class="sr-only">Usuario</label>
+            <input type="text" id="inputUser" name="inputUser" class="form-control" placeholder="Usuario" >
             <label for="inputPass" class="sr-only">Contraseña</label>
             <input type="password" id="inputPass" name="inputPass" class="form-control" placeholder="Contraseña" >
             <button class="btn btn-lg btn-primary btn-block" type="submit">Iniciar sesión</button>

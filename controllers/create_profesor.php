@@ -23,7 +23,7 @@ $clave = strtolower($user) . ($getNumProfs + 1);
 $sqlSearchUser = "SELECT id FROM $tProf WHERE user = '$user' ";
 $resSearchUser = $con->query($sqlSearchUser);
 if ($resSearchUser->num_rows > 0) {
-    $cadErr = 'Error: El usuario ya existe.';
+    $cadErr = 'Error: El correo ya existe.';
     $ban = false;
 } else {//Si no existe
     $sqlInsertInfo = "INSERT INTO $tInfo (celular, correo, foto_perfil, creado, actualizado) "
