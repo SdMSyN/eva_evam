@@ -223,7 +223,10 @@ thead > tr > td:last-of-type,th:last-of-type{
 
 /* Nuevos colores */
 .navbar-default {
-    background: #068BEA;
+    background: #1992EB;
+}
+.footer{
+    background-color: #1992EB;
 }
 
 .btn-primary {
@@ -242,7 +245,7 @@ thead > tr > td:last-of-type,th:last-of-type{
 }
 
 .navbar-default .navbar-nav>li>a {
-    color: #FFFFFF;
+    color: #F5F5F5;
 }
 .navbar-default .navbar-nav>li>a:hover {
     color: #fd8917;
@@ -250,18 +253,18 @@ thead > tr > td:last-of-type,th:last-of-type{
 
 #data th {
     background-color: #068BEA;
-    color: whitesmoke;
+    color: #F5F5F5;
 }
 thead > tr > td, th {
     background-color: #068BEA;
-    color: whitesmoke;
+    color: #F5F5F5;
 }
 .table>tbody>tr {
     background-color: #f9f9f9;
 }
 
 body {
-    background: url(../obj/header2.png);
+    background: url(../obj/header.png);
     background-size: cover;
     background-position: top center;
     text-align: center;
@@ -277,4 +280,8 @@ a:hover {
 }
 a>span{
     color: #068BEA;
+}
+
+.navbar-collapse > p, h1, h2, h3 {
+    color: #F5F5F5;
 }

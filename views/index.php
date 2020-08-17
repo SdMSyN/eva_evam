@@ -31,7 +31,6 @@
             <button class="btn btn-lg btn-primary btn-block" type="submit">Iniciar sesión</button>
             <hr>
             <h3>Contacto</h3>
-            <p><b>Celular/WhatsApp:</b> 246-195-36-23</p>
             <p><b>Facebook:</b> <a href="https://www.facebook.com/innovacionydesarrolloeducativo/?fref=ts" target="_blank">Innovación y desarrollo educativo</a></p>
         </form>
         
