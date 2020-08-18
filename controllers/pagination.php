@@ -8,11 +8,11 @@ function paginate($reload, $page, $tpages, $adjacents) {
 	
 	// previous label
 	if($page==1) {
-		$out.= "<li class='disabled'><span><a>$prevlabel</a></span></li>";
+		$out.= "<li class='disabled'><span><a style='color:#337ab7'>$prevlabel</a></span></li>";
 	} else if($page==2) {
-		$out.= "<li><span><a href='javascript:void(0);' onclick='load(1)'>$prevlabel</a></span></li>";
+		$out.= "<li><span><a href='javascript:void(0);' onclick='load(1)' style='color:#337ab7'>$prevlabel</a></span></li>";
 	}else {
-		$out.= "<li><span><a href='javascript:void(0);' onclick='load(".($page-1).")'>$prevlabel</a></span></li>";
+		$out.= "<li><span><a href='javascript:void(0);' onclick='load(".($page-1).")' style='color:#337ab7'>$prevlabel</a></span></li>";
 	}
 	
 	// first label
@@ -50,9 +50,9 @@ function paginate($reload, $page, $tpages, $adjacents) {
 	// next
 
 	if($page<$tpages) {
-		$out.= "<li><span><a href='javascript:void(0);' onclick='load(".($page+1).")'>$nextlabel</a></span></li>";
+		$out.= "<li><span><a href='javascript:void(0);' onclick='load(".($page+1).")' style='color:#337ab7'>$nextlabel</a></span></li>";
 	}else {
-		$out.= "<li class='disabled'><span><a>$nextlabel</a></span></li>";
+		$out.= "<li class='disabled'><span><a style='color:#337ab7'>$nextlabel</a></span></li>";
 	}
 	
 	$out.= "</ul>";
